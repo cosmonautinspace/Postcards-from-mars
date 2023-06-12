@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+{% block content %}
+    <h1>Postcards From Mars</h1>
+    <div>
+        <form method="POST" action="#">
+            {{ form.hidden_tag() and form.csrf_token() }}
+            {{ form.pictureDate.label() }}
+            {{ form.pictureDate() }}
+            {{ form.submit() }}
+        </form>
+        {% if form.errors: %}
+            {{ form.validate_on_submit() }}
+        {% else %}
+            <p>no errors</p>
+        {% endif %}
+    </div>
+{% endblock content %}
