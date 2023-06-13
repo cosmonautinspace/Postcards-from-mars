@@ -2,7 +2,7 @@
     border: solid 2px darkblue;
     margin: 20px;
     padding: 20px;
-    background-color: antiquewhite;
+    background-color: rgb(236, 236, 236);
 }
 
 .stamps {
@@ -26,4 +26,8 @@ h3 {
 
 #heading {
     text-align: center;
+}
+
+body {
+    background-color: black;
 }

@@ -28,7 +28,7 @@
                 </div>
             {% endfor %}
         {% else %}
-            <h1>No images found for that date. Please try a different date.</h1>
+            <h1>No images found for that date. Please try a different date. <a href="{{ url_for('home') }}">Return to home</a></h1>
         {% endif %}            
     </div>
 {% endblock %}
