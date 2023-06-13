@@ -12,15 +12,15 @@ api_key = 'cVx8cdLFLJree03QdRHdhr4tfndlWfgA60SRDrTR'
 def home():
     form = getpicture()
     if form.validate_on_submit():
-        apiRequest(api_key, form.pictureDate.data)
-        return redirect(url_for('postcards', pictureDate = form.pictureDate.data))
+        apiRequest(api_key, form.pictureDate.data, form.rover.data)
+        return redirect(url_for('postcards', rover=form.rover.data, pictureDate = form.pictureDate.data))
     else:
         flash(form.errors)
     return render_template('home.html', title='Home',form=form)
 
-@app.route('/postcards/<string:pictureDate>')
-def postcards(pictureDate):
-    file = open(f'cache/{pictureDate}.json')
+@app.route('/postcards/<string:rover>/<string:pictureDate>')
+def postcards(rover,pictureDate):
+    file = open(f'cache/{rover}/{pictureDate}.json')
     data =  json.load(file)
     file.close()
     return render_template('postcards.html', title=pictureDate, data=data)

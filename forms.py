@@ -1,7 +1,8 @@
 from flask_wtf import FlaskForm
-from wtforms import SubmitField, DateField, StringField
-from wtforms.validators import DataRequired, InputRequired
+from wtforms import SubmitField, DateField, SelectField
+from wtforms.validators import DataRequired
 
 class getpicture(FlaskForm):
-    pictureDate = StringField('Picture Date (YYYY-M-D)', validators=[DataRequired()])
+    rover = SelectField('Rover', choices=[('Curiosity','Curiosity'),('Opportunity','Opportunity'),('Spirit','Spirit')], validators=[DataRequired()])
+    pictureDate = DateField('Date', format="%Y-%m-%d", validators=[DataRequired()])
     submit = SubmitField('Get Picture')

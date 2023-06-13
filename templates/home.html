@@ -1,17 +1,28 @@
 {% extends "layout.html" %}
 {% block content %}
-    <h1>Postcards From Mars</h1>
-    <div>
-        <form method="POST" action="#">
-            {{ form.hidden_tag() and form.csrf_token() }}
-            {{ form.pictureDate.label() }}
-            {{ form.pictureDate() }}
-            {{ form.submit() }}
+    <div class="container">
+        <h1 id="heading">Postcards From Mars</h1>
+    </div>
+    <div class="container">
+        <form method="POST" action="#" class="form-control">
+            {{ form.hidden_tag() }}
+            <div>
+                <p style="text-align: center;">
+                    {{ form.rover.label() }}:
+                    {{ form.rover()}}
+                </p>
+            </div>
+            <div>
+                <p style="text-align: center;">
+                    {{ form.pictureDate.label() }}:
+                    {{ form.pictureDate() }} <br>
+                    
+                </p>
+            </div>
+            <div style="text-align: center;">
+                {{ form.submit(class="btn btn-outline-info") }}
+            </div>
+            
         </form>
-        {% if form.errors: %}
-            {{ form.validate_on_submit() }}
-        {% else %}
-            <p>no errors</p>
-        {% endif %}
     </div>
 {% endblock content %}
