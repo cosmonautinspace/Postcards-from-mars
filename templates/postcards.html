@@ -3,32 +3,40 @@
     <div class="container"">
         <div class="row" style="text-align: center;"></div>
         {% if data['photos']!=[] %}
-            {% for image in data['photos'] %}
+            {% for i in range(0,1) %}
                 <div class="row postcard">
                     <div class="col">
-                        <img src="{{ image.img_src }}" alt="" height="500px" class="stamps">
+                        <img src="{{ data.photos[i].img_src }}" alt="" height="500px" class="stamps">
                     </div>
                     <div class="col">
                         <div class="row">
-                            <div class="col"><h1>From,<br> {{ image.rover.name }}</h1></div>
-                            <div class="stamps" style="align-self: right;"> <img src="/static/Portraits/{{image.rover.name}}.png" alt="" id="sticker" height="100px"></div>
+                            <div class="col"><h1>From,<br>{{ data.photos[i].rover.name}} </h1></div>
+                            <div class="stamps" style="align-self: right;"> <img src="/static/Portraits/Curiosity.png" alt="" id="sticker" height="100px"></div>
                         </div>
                         <br><br><br>
-                        <div class="row"><h3>Camera: {{ image.camera.name }}</h3></div>
-                        <div class="row"><h3>Date: Sol {{ image.sol }} ({{ image.earth_date }})</h3></div>
+                        <div class="row"><h3>Camera: {{ data.photos[i].camera.name }}</h3></div>
+                        <div class="row"><h3>Date: Sol {{ data.photos[i].sol }} ({{ data.photos[i].earth_date }})</h3></div>
                         <div class="row"><h3>Message:</h3></div>
                         <div class="row">
-                            {% if image.rover.status == 'active'%}
+                            {% if data.photos[i].rover.status == 'active'%}
                                 <h3>Hello!...Mission Status: Active...Still exploring...A lot of Science to do...</h3>
                             {% else %}
                                 <h3>Hello!...Mission Status: Complete...Going dark...Be seeing you...</h3>
                             {% endif %}
                         </div>
+                        <br>
+                        {% if data.photos[i].rover.name == "Curiosity"%}
+                            <div class="row"><a href="https://mars.nasa.gov/msl/home/"><h3>More about {{ data.photos[i].rover.name }}</h3></a></div>
+                        {% elif data.photos[i].rover.name == "Spirit"%}
+                            <div class="row"><a href="https://solarsystem.nasa.gov/missions/spirit/in-depth/"><h3>More about {{ data.photos[i].rover.name }}</h3></a></div>
+                        {% elif data.photos[i].rover.name == "Opportunity" %}
+                            <div class="row"><a href="https://www.jpl.nasa.gov/missions/mars-exploration-rover-opportunity-mer"><h3>More about {{ data.photos[i].rover.name }}</h3></a></div>
+                        {% endif %}
                     </div>
                 </div>
             {% endfor %}
         {% else %}
-            <h1>No images found for that date. Please try a different date. <a href="{{ url_for('home') }}">Return to home</a></h1>
+            <h1 id="heading">No images found for that date. Please try a different date. <a href="{{ url_for('postcard_home') }}">Return to home</a></h1>
         {% endif %}            
     </div>
 {% endblock %}

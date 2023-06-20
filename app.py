@@ -8,15 +8,21 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = '5791628bb0b13ce0c676dfde280ba245'
 api_key = 'cVx8cdLFLJree03QdRHdhr4tfndlWfgA60SRDrTR'
 
-@app.route('/', methods = ['GET', 'POST'])
+
+@app.route('/')
+@app.route('/home')
 def home():
+    return render_template('home.html', title='Cosmonautinspace')
+
+@app.route('/postcards', methods = ['GET', 'POST'])
+def postcard_home():
     form = getpicture()
     if form.validate_on_submit():
         apiRequest(api_key, form.pictureDate.data, form.rover.data)
         return redirect(url_for('postcards', rover=form.rover.data, pictureDate = form.pictureDate.data))
     else:
         flash(form.errors)
-    return render_template('home.html', title='Home',form=form)
+    return render_template('postcards_home.html', title='Home',form=form)
 
 @app.route('/postcards/<string:rover>/<string:pictureDate>')
 def postcards(rover,pictureDate):

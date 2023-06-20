@@ -18,14 +18,17 @@
 
 h1 {
     font-family: Cascadia Code;
+    color: white;
 }
 
 h3 {
     font-family: Cascadia Code;
+    color: white;
 }
 
 #heading {
     text-align: center;
+    color: azure;
 }
 
 body {

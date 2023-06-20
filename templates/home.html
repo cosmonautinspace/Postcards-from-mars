@@ -1,28 +1,16 @@
 {% extends "layout.html" %}
 {% block content %}
-    <div class="container">
-        <h1 id="heading">Postcards From Mars</h1>
+    <div>
+        <h1 id="heading">Hello!</h1>
+        <br>
     </div>
-    <div class="container">
-        <form method="POST" action="#" class="form-control">
-            {{ form.hidden_tag() }}
-            <div>
-                <p style="text-align: center;">
-                    {{ form.rover.label() }}:
-                    {{ form.rover()}}
-                </p>
-            </div>
-            <div>
-                <p style="text-align: center;">
-                    {{ form.pictureDate.label() }}:
-                    {{ form.pictureDate() }} <br>
-                    
-                </p>
-            </div>
-            <div style="text-align: center;">
-                {{ form.submit(class="btn btn-outline-info") }}
-            </div>
-            
-        </form>
+
+    <div class="container" style="border: solid 2px; background-color: aliceblue;">
+        <h1 id="heading" style="color: black;"> <a href="{{ url_for('postcard_home')}}">Postcards from Mars </a></h1> 
     </div>
+
+    <div class="container" style="border: solid 2px; background-color: aliceblue;">
+        <h1 id="heading" style="color: black;">More stuff coming soon...maybe.</h1> 
+    </div>
+    
 {% endblock content %}
